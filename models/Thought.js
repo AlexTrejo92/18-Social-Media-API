@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose');
 
-const ThoughtSchema = new Schema(
+const thoughtSchema = new Schema(
     {
         thoughtText: {
             type: String,
@@ -10,6 +10,16 @@ const ThoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-        }
+        },
+        username: {
+            type:String,
+            required: true
+        },
+        reactions:[reactionSchema]
     }
-)
+);
+//TODO: Virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
+
+const Thoughts = model('thoughts', thoughtSchema);
+
+module.exports = Thoughts;

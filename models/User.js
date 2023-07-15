@@ -1,7 +1,7 @@
 const {Schema, model} = require('mongoose');
 const ThoughtSchema = require('./Thought');
 
-const UsersSchema = new Schema(
+const userSchema = new Schema(
     {
         username: {
             type: String,
@@ -24,6 +24,9 @@ const UsersSchema = new Schema(
     {
         friends:[UsersSchema]
     }
-)
+);
 //TODO: create virtuals
 
+const User = model('user', userSchema);
+
+module.exports = User;
