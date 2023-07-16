@@ -8,24 +8,33 @@ const userSchema = new Schema(
             unique: true, //TODO: revise this
             required: true,
             trimmed: yes, //TODO: revise this
-        }
-    },
-    {
+        },
         email: {
             type: String,
             unique: true,
             required:true,
             validator //TODO: check this
-        }
+        },
+        thoughts: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Thoughts'
+        }],
+        friends:[{
+            type: Schema.Types.ObjectId,
+            ref: 'user'
+        }]
     },
     {
-        thoughts: [Thought]
-    },
-    {
-        friends:[UsersSchema]
-    }
+        toJSON: {
+          virtuals: true,
+        },
+        id: false,
+      }
 );
 //TODO: create virtuals
+userSchema.virtual('friendCount').get(function(){
+    return this.friends.length
+})
 
 const User = model('user', userSchema);
 

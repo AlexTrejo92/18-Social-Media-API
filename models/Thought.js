@@ -20,6 +20,6 @@ const thoughtSchema = new Schema(
 );
 //TODO: Virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
 
-const Thoughts = model('thoughts', thoughtSchema);
+const Thoughts = model('Thoughts', thoughtSchema);
 
 module.exports = Thoughts;
