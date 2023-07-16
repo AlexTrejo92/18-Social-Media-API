@@ -1,4 +1,10 @@
 const users = [
-    'johndoe99',
-    'janeDoe1234'
+    {
+    username: 'johndoe99',
+    email: 'test1@gmail.com',
+    thoughts: '',
+    friends: '5'
+    },
 ]
+
+module.exports = users

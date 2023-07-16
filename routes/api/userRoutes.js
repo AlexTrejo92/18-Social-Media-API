@@ -3,3 +3,5 @@ const {getUsers,getSingleUser,createUser,updateUser,deleteUser} = require('../..
 // /api/users
 router.route('/').get(getUsers).post(createUser);
 router.route('/:userID').get(getSingleUser).put(updateUser).delete(deleteUser);
+
+// TODO: Bonus: remove a user's associated thoughts when deleted.
