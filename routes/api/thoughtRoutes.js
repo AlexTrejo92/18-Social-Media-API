@@ -6,5 +6,7 @@ router.route('/:thoughtID').get(getSingleThought).put(updateThought).delete(dele
 
 // TODO: Check the reactions route and controller
 
-router.route('/:thoughtID/reactions').post(createReaction);
-router.route('/:thoughtID/reactions').delete(deleteReaction);
+// router.route('/:thoughtID/reactions').post(createReaction);
+// router.route('/:thoughtID/reactions').delete(deleteReaction);
+
+module.exports = router;

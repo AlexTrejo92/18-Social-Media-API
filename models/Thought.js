@@ -1,11 +1,13 @@
 const {Schema, model} = require('mongoose');
+const reactionSchema = require('./Reaction');
 
 const thoughtSchema = new Schema(
     {
         thoughtText: {
             type: String,
             required: true,
-            validatelenght: 12
+            minlength: 2,
+            maxlength: 80,
         },
         createdAt: {
             type: Date,
@@ -16,6 +18,13 @@ const thoughtSchema = new Schema(
             required: true
         },
         reactions:[reactionSchema] // TODO: revise this
+    },
+    {
+        timestamps: true,
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
     }
 );
 //TODO: Virtual called reactionCount that retrieves the length of the thought's reactions array field on query.

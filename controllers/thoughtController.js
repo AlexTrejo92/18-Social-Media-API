@@ -26,15 +26,19 @@ module.exports = {
     async createThought(req,res) {
         try {
             const newThought = await Thought.create(req.body)
-            // TODO: Check challenge requirements for thoughtText, username, userID
-            res.json(newThought)
+            const user = await User.findOneAndUpdate(
+                {_id: req.body.userID},
+                {$push: {thoughts: newThought._id}},
+                {new: true}
+            )
+            res.json(user)
         } catch(err) {
             console.log(err);
             return res.status(500).json(err);
         }
         },
     async updateThought(req, res) {
-        try{ // TODO: check if there's something missing here
+        try{
             const updatedThought = await Thought.findOneAndUpdate(
             {_id: req.params.thoughtID},
             {$set: req.body},
