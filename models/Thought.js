@@ -17,8 +17,9 @@ const thoughtSchema = new Schema(
             type:String,
             required: true
         },
-        reactions:[reactionSchema] // TODO: revise this
+        reactions:[reactionSchema]
     },
+    //added to allow the use of virtuals
     {
         timestamps: true,
         toJSON: {
@@ -27,7 +28,7 @@ const thoughtSchema = new Schema(
         id: false,
     }
 );
-//TODO: Virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
+//Virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
 thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length
 })

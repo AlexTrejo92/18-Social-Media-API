@@ -9,6 +9,7 @@ const userSchema = new Schema(
             required: true,
             trim: true,
         },
+        // in here we use a regex to test for a valid email address
         email: {
             type: String,
             unique: true,
@@ -31,7 +32,6 @@ const userSchema = new Schema(
         id: false,
     }
 );
-//TODO: create virtuals
 userSchema.virtual('friendCount').get(function(){
     return this.friends.length
 })
